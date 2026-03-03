@@ -1,0 +1,36 @@
+# 色谱杂质分析器 - 配置文件
+
+# ASKCOS API配置
+askcos:
+  api_url: "https://askcos.mit.edu/api/v2"
+  timeout: 300
+  max_retries: 3
+
+# OpenAI Vision API配置（用于图片识别）
+openai:
+  model: "gpt-4-vision-preview"
+  temperature: 0.1
+  max_tokens: 500
+
+# 保留时间预测配置
+retention_time:
+  model_type: "neural_network"  # neural_network or xgboost
+  chromatography_type: "RP"  # RP, HILIC, or mixed-mode
+
+# 分离度评估配置
+separation:
+  min_resolution: 1.5  # 最小分离度要求
+  time_window: 10  # 分钟，检查时间窗口
+
+# 色谱条件优化配置
+optimization:
+  max_iterations: 100
+  temperature_range: [30, 60]  # 摄氏度
+  ph_range: [2.0, 10.0]
+  organic_modifier_range: [5, 95]  # %
+
+# 日志配置
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/workflow.log"
